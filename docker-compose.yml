@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  script:
+    build: .
+    depends_on:
+      selenium:
+        condition: service_healthy
+    environment:
+      - SELENIUM_HOST=selenium
+      - PASSWORD=${PASSWORD}
+      - ROUTER_IP=${ROUTER_IP}
+
+  selenium:
+    image: selenium/standalone-firefox:latest
+    shm_size: 2gb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4444"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
