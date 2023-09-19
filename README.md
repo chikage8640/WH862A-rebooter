@@ -31,7 +31,7 @@ docker compose up --abort-on-container-exit
 
 あとはcronで実行するなりお好きにお使いください。
 
-ちなみに自分は以下のコマンドをcrontabに書いてます。
+ちなみに自分は以下のコマンドをcronに書いてます。
 
 ```
 docker compose -f /home/chikage/router_reboot/docker-compose.yml up --abort-on-container-exit; sleep 40; ddclient
